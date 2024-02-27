@@ -3,6 +3,7 @@
 # Gitlab Repository
 
 Because of using the gitlab container registry and also gitlab group feature, I've created all repositories inside the Gitlab, you can find all resources inside the gitlab repository here:
+
 [https://gitlab.com/argocd-gitops-template](https://gitlab.com/argocd-gitops-template)
 
 ![gitlab-tree](./.images/gitlab-tree.png)
@@ -11,12 +12,12 @@ Because of using the gitlab container registry and also gitlab group feature, I'
 
 - [Kubernetes](https://www.redhat.com/en/topics/containers/what-is-kubernetes) cluster :
   In order to have a kubernetes cluster we have several options:
-  1- Create a kubernetes service on a cloud provider like [AWS](https://aws.amazon.com/)
-  2- Create a kubernetes service on the [Hetzner Cloud](https://www.hetzner.com/cloud/)
-  I've created a template to setup a highly avalable kubernetes on the Hetzner Cloud here [kubernetes-hetzner-lac-template](https://github.com/MahdadGhasemian/kubernetes-hetzner-lac-templatev) and described it here [Kubernetus Cluster](https://medium.com/@mahdad.ghasemian/setting-up-a-highly-available-kubernetus-cluster-k3s-on-hetzner-cloud-with-terraform-7a409a7a8528)
-  3- [Minikube](https://minikube.sigs.k8s.io/docs/) as a local k8s development
-  4- [K3S](https://k3s.io/) (local and production)
-  5- [K3D](https://k3d.io/v5.6.0/) as a local k3s development
+  - Create a kubernetes service on a cloud provider like [AWS](https://aws.amazon.com/)
+  - Create a kubernetes service on the [Hetzner Cloud](https://www.hetzner.com/cloud/)
+    I've created a template to setup a highly avalable kubernetes on the Hetzner Cloud here [kubernetes-hetzner-lac-template](https://github.com/MahdadGhasemian/kubernetes-hetzner-lac-templatev) and described it here [Kubernetus Cluster](https://medium.com/@mahdad.ghasemian/setting-up-a-highly-available-kubernetus-cluster-k3s-on-hetzner-cloud-with-terraform-7a409a7a8528)
+  - [Minikube](https://minikube.sigs.k8s.io/docs/) as a local k8s development
+  - [K3S](https://k3s.io/) (local and production)
+  - [K3D](https://k3d.io/v5.6.0/) as a local k3s development
 - [Kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) to interact with the Kubernetes cluster
 - [Helm](https://helm.sh/docs/intro/install/) to install packegs on our kubernetes
 - [Docker](https://www.docker.com/) to install k3d
