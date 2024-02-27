@@ -1,11 +1,11 @@
-![argocd-gitops](./.images/argocd-gitops.png){ width=50% }
+![argocd-gitops](./.images/argocd-gitops.png)
 
 # Gitlab Repository
 
 Because of using the gitlab container registry and also gitlab group feature, I've created all repositories inside the Gitlab, you can find all resources inside the gitlab repository here:
 [https://gitlab.com/argocd-gitops-template](https://gitlab.com/argocd-gitops-template)
 
-![gitlab-tree](./.images/gitlab-tree.png){ width=30% }
+![gitlab-tree](./.images/gitlab-tree.png)
 
 # Requirements
 
@@ -28,13 +28,15 @@ Minikube is local Kubernetes, focusing on making it easy to learn and develop fo
 ## What is K3S ?
 
 K3s is a highly available, certified Kubernetes distribution designed for production workloads in unattended, resource-constrained, remote locations or inside IoT appliances.
-![K3s](./.images/how-it-works-k3s-revised.svg){ width=50% }
+
+![K3s](./.images/how-it-works-k3s-revised.svg)
 
 ## What is K3D ?
 
 k3d is a lightweight wrapper to run k3s (Rancher Lab’s minimal Kubernetes distribution) in docker.
 k3d makes it very easy to create single- and multi-node k3s clusters in docker, e.g. for local development on Kubernetes.
-![k3d](./.images/k3d_logo_black_blue.svg){ width=50% }
+
+![k3d](./.images/k3d_logo_black_blue.svg)
 
 ## Conclusion
 
@@ -181,7 +183,7 @@ ssh-keygen -t ed25519 -f ~/.ssh/argocd-gitops-template-ed25519
 
 - Go to the deploy repository (for our group: https://gitlab.com/argocd-gitops-template/infrastructure/deploy)
 - Settings -> Repository -> Deploy keys -> Add new key
-  ![gitlab-setting-repository-deploy-keys](./.images/gitlab-setting-repository-deploy-keys.png){ width=80% }
+  ![gitlab-setting-repository-deploy-keys](./.images/gitlab-setting-repository-deploy-keys.png)
 - Copy the public key:
   - Write a title
   - Copy your public key on the key part
@@ -189,7 +191,7 @@ ssh-keygen -t ed25519 -f ~/.ssh/argocd-gitops-template-ed25519
     cat ~/.ssh/argocd-gitops-template-ed25519.pub
   ```
   - Check the `Grant write permissions to this key`
-    ![gitlab-setting-repository-deploy-keys-fill](./.images/gitlab-setting-repository-deploy-keys-fill.png){ width=50% }
+    ![gitlab-setting-repository-deploy-keys-fill](./.images/gitlab-setting-repository-deploy-keys-fill.png)
 - Edit the git-repo-secret.yaml:
 
   - Change the `stringData.url` (alter to your deploy repository address)
@@ -233,7 +235,7 @@ ssh-keygen -t ed25519 -f ~/.ssh/argocd-gitops-template-ed25519
   - Name: read_registery_and_package
   - Scopes: read_registry and read_package_registry
   - username: k8s
-    ![gitlab-registery-read-access](./.images/gitlab-registery-read-access.png){ width=50% }
+    ![gitlab-registery-read-access](./.images/gitlab-registery-read-access.png)
 - Create secret.yaml file and replace the token:
 
   - Change the `stringData.token`
@@ -295,8 +297,8 @@ We're going to deploy stage branch as staging and main branch as a production se
 In the `gitlab.ci` file we have to separate pipeline to make images for staging and production.
 It will automatically generate an image from out backend or frontend projects and put them inside the gitlab container registery
 
-![gitlab-container-registery](./.images/gitlab-container-registery.png){ width=50% }
-![gitlab-container-registery-detail](./.images/gitlab-container-registery-detail.png){ width=50% }
+![gitlab-container-registery](./.images/gitlab-container-registery.png)
+![gitlab-container-registery-detail](./.images/gitlab-container-registery-detail.png)
 
 ```yaml
 default:
@@ -343,7 +345,8 @@ main-release:
 When a new version is generated, the argocd image updater will be informed and then start to create a new file inside the `deploy` repository to tell the argocd there is new update and then the argocd will refresh the app and is synked with new update.
 
 An example of file version
-![argocd-image-updater-git-method](./.images/argocd-image-updater-git-method.png){ width=80% }
+
+![argocd-image-updater-git-method](./.images/argocd-image-updater-git-method.png)
 
 # Run Applications
 
@@ -399,11 +402,12 @@ kubectl apply -f application-staging.yaml
 kubectl apply -f application-production.yaml
 ```
 
-![argocd-applications](./.images/argocd-applications.png){ width=80% }
-![argocd-detail](./.images/argocd-detail.png){ width=80% }
+![argocd-applications](./.images/argocd-applications.png)
+![argocd-detail](./.images/argocd-detail.png)
 
 ## Note
 
 The ui projects need to know what is the api base url
 so you should add the `APP_BASE_URL_STAGING` and `APP_BASE_URL_PRODUCTION` environment inside the `Frontend` group and then merge the project from developing into stage and from stage into main branch.
-![gitlab-environment-1](./.images/gitlab-environment-1.png){ width=30% } ![gitlab-environment-2](./.images/gitlab-environment-2.png){ width=30% }
+
+![gitlab-environment-1](./.images/gitlab-environment-1.png) ![gitlab-environment-2](./.images/gitlab-environment-2.png)
